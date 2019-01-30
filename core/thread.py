@@ -148,7 +148,7 @@ class Thread(ThreadABC):
         else:
             desc = "Could not resolve log url."
 
-        embed = discord.Embed(description=desc, color=discord.Color.red())
+        embed = discord.Embed(description=desc, color=discord.Color(a0fbff))
 
         if self.recipient is not None:
             user = f"{self.recipient} (`{self.id}`)"
