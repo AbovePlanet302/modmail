@@ -157,7 +157,7 @@ class Thread(ThreadABC):
 
         embed.title = user
 
-        event = 'Thread Closed as Scheduled' if scheduled else 'Thread Closed'
+        event = 'Help Session Closed' if scheduled else 'Help Session Closed'
         # embed.set_author(name=f'Event: {event}', url=log_url)
         embed.set_footer(text=f'{event} by {closer} ({closer.id})')
         embed.timestamp = datetime.utcnow()
@@ -171,14 +171,14 @@ class Thread(ThreadABC):
 
         # Thread closed message
 
-        embed = discord.Embed(title='Thread Closed',
-                              color=discord.Color.red(),
+        embed = discord.Embed(title='Help Session Closed',
+                              color=discord.Color.blurple(),
                               timestamp=datetime.utcnow())
 
         if not message:
-            message = f'{closer.mention} has closed this Modmail thread.'
+            message = f'This Mod Mail session has been closed.'
         embed.description = message
-        embed.set_footer(text='Replying will create a new thread',
+        embed.set_footer(text='Replying will put you back in the waiting queue.',
                          icon_url=self.bot.guild.icon_url)
 
         if not silent and self.recipient is not None:
@@ -265,7 +265,7 @@ class Thread(ThreadABC):
             tasks.append(
                 self.channel.send(
                     embed=discord.Embed(
-                        color=discord.Color.red(),
+                        color=discord.Color.blurple(),
                         description='Scheduled close has been cancelled.'
                     )
                 )
@@ -279,7 +279,7 @@ class Thread(ThreadABC):
             # cancel closing if a thread message is sent.
             await self.cancel_closure()
             await self.channel.send(embed=discord.Embed(
-                color=discord.Color.red(),
+                color=discord.Color.blurple(),
                 description='Scheduled close has been cancelled.'
             ))
 
@@ -522,7 +522,7 @@ class ThreadManager(ThreadManagerABC):
 
         thread_creation_response = self.bot.config.get(
             'thread_creation_response',
-            'The moderation team will get back to you as soon as possible!'
+            'We are currently assisting another user, so we have added you to the queue. We will respond as soon as someone is available!'
         )
 
         embed = discord.Embed(
@@ -530,7 +530,7 @@ class ThreadManager(ThreadManagerABC):
             description=thread_creation_response,
             timestamp=datetime.utcnow(),
         )
-        embed.set_footer(text='Your message has been sent',
+        embed.set_footer(text='You can type ?cancel to be taken out of the queue.',
                          icon_url=self.bot.guild.icon_url)
         embed.set_author(name='Thread Created')
 
