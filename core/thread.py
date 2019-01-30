@@ -148,7 +148,7 @@ class Thread(ThreadABC):
         else:
             desc = "Could not resolve log url."
 
-        embed = discord.Embed(description=desc, color=discord.Color(a0fbff))
+        embed = discord.Embed(description=desc, color=discord.Color.blurple())
 
         if self.recipient is not None:
             user = f"{self.recipient} (`{self.id}`)"
@@ -567,7 +567,7 @@ class ThreadManager(ThreadManagerABC):
 
         log_count = sum(1 for log in log_data if not log['open'])
         info_embed = self._format_info_embed(recipient, log_url, log_count,
-                                             discord.Color.green())
+                                             discord.Color.blurple())
 
         topic = f'User ID: {recipient.id}'
         if creator:
