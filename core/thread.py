@@ -244,12 +244,12 @@ class Thread(ThreadABC):
 
         # Thread closed message
 
-        embed = discord.Embed(title='Thread Closed',
-                              color=discord.Color.red(),
+        embed = discord.Embed(title='Ticket Closed',
+                              color=discord.Color(#8ca4ff),
                               timestamp=datetime.utcnow())
 
         if not message:
-            message = f'{closer.mention} has closed this Modmail thread.'
+            message = f'{closer.mention} Has closed this Support Ticket. If you need further help DM us again.'
         embed.description = message
         embed.set_footer(text='Replying will create a new thread',
                          icon_url=self.bot.guild.icon_url)
