@@ -172,7 +172,7 @@ class Thread(ThreadABC):
         # Thread closed message
 
         embed = discord.Embed(title='Help Session Closed',
-                              color=discord.Color.red(),
+                              color=discord.Color.blurple(),
                               timestamp=datetime.utcnow())
 
         if not message:
