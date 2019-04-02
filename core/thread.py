@@ -530,7 +530,7 @@ class ThreadManager(ThreadManagerABC):
             description=thread_creation_response,
             timestamp=datetime.utcnow(),
         )
-        embed.set_footer(text='You can type !close to be taken out of the queue',
+        embed.set_footer(text='Server Pro Support',
                          icon_url=self.bot.guild.icon_url)
         embed.set_author(name='Thread Created')
 
