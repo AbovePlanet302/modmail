@@ -176,9 +176,9 @@ class Thread(ThreadABC):
                               timestamp=datetime.utcnow())
 
         if not message:
-            message = f'This Mod Mail session has been closed.'
+            message = f'Thank you for reaching out to us. We hope we solved your problem fell free to DM us again.'
         embed.description = message
-        embed.set_footer(text='Replying will put you back in the waiting queue.',
+        embed.set_footer(text='Replying will put you back in the queue',
                          icon_url=self.bot.guild.icon_url)
 
         if not silent and self.recipient is not None:
@@ -522,7 +522,7 @@ class ThreadManager(ThreadManagerABC):
 
         thread_creation_response = self.bot.config.get(
             'thread_creation_response',
-            'We are currently assisting another user, so we have added you to the queue. We will respond as soon as someone is available!'
+            'Thank you for reaching out to us. Our team will look into your request and get back to you shortly.'
         )
 
         embed = discord.Embed(
@@ -530,7 +530,7 @@ class ThreadManager(ThreadManagerABC):
             description=thread_creation_response,
             timestamp=datetime.utcnow(),
         )
-        embed.set_footer(text='You can type ?cancel to be taken out of the queue.',
+        embed.set_footer(text='You can type !close to be taken out of the queue',
                          icon_url=self.bot.guild.icon_url)
         embed.set_author(name='Thread Created')
 
