@@ -522,7 +522,7 @@ class ThreadManager(ThreadManagerABC):
 
         thread_creation_response = self.bot.config.get(
             'thread_creation_response',
-            'Thank you for reaching out to us. Our team will look into your request and get back to you shortly.'
+            'We just want to confirm that we received your message. Our support team is slamming away and will tackle your request as soon as their rocket boosted finger tips can get to it.'
         )
 
         embed = discord.Embed(
@@ -532,7 +532,7 @@ class ThreadManager(ThreadManagerABC):
         )
         embed.set_footer(text='Server Pro Support',
                          icon_url=self.bot.guild.icon_url)
-        embed.set_author(name='Thread Created')
+        embed.set_author(name='Message Recived')
 
         if creator is None:
             self.bot.loop.create_task(recipient.send(embed=embed))
